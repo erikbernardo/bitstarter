@@ -3,8 +3,11 @@ var fs = require('fs');
 
 var app = express.createServer(express.logger());
 
+app.use('/images/', express.static(__dirname +'/images/'));
+app.use('/css/', express.static(__dirname +'/css/'));
+
 app.get('/', function(request, response) {
-    var fileContent = fs.readFileSync("index.html");
+    var fileContent = fs.readFileSync("index.html"); //remove sync later
     response.send(fileContent.toString());
 });
 
